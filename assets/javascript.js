@@ -1,4 +1,4 @@
-// pseudo code
+// psuedo code
 /*
 
 Only two users can play at the same time.
@@ -50,11 +50,14 @@ var gameTracker = {
 
 	});
 
-  //set click event on buttons to triggers db update 
+  //set click event on buttons to trigger db update 
 	
 	$(".choice")  on click
+// need to track which players have made a selection
+
 		var thisPlayer = $(this).attr('data-player'); 
 		gameDb.update({[thisPlayer]:$(this).attr("data-choice")})
+
 
 	if (thisPlayer == 'Player 1')
 		var lastToGo='Player 2'
@@ -66,18 +69,16 @@ var gameTracker = {
 //on 'chat' click event for each player, update chat array
 	$('.chat').on('click',function(){
 		gameDb.chats.push($(this).attr('data-player')+': '+$(this).val().trim());
+		
+	//update Firebase 
 		db.update({chats:gameTracker.chats})
 
 	}); // end chat click function
-	
-	
-	
-	
 
-
-	// check for chats
+// to do 
+// check for chats
 	
-
+// basic RPS logic
 	if (data.child("p1choice") != '' && data.child("p2choice") != '')
 		// both players have made their selections
 		// continue this round
